@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <script crossorigin         src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script> 
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="text/jsx">
+            class Header extends React.Component {
+                render() {
+                    return (<div>
+                        <h1>Welcome to React JS Training</h1>    
+                    </div>);
+                }
+            }
+
+            class Footer extends React.Component {
+                render() {
+                    return (<h5>Copyrights reserved, 2019.</h5>);
+                }
+            }
+
+            class ValidCredentials extends React.Component {
+                render() {
+                    return (<h3 style={{color: "green"}}>Logging in...</h3>)
+                }
+            }
+
+            class InvalidCredentials extends React.Component {
+                render() {
+                    return (<h3 style={{color: "red"}}>Incorrect username or password</h3>)
+                }
+            }
+
+            
+            class Authentication extends React.Component {
+                
+                login() {
+                    let userName = document.getElementById("username").value;
+                    let password = document.getElementById("password").value;
+                
+                    if(userName === "admin" && password === "admin") {
+                        document.getElementById("loginbtn").disabled = true;
+                        ReactDOM.render(<ValidCredentials/>, document.getElementById("result"));
+                    }
+                    else {
+                        ReactDOM.render(<InvalidCredentials/>, document.getElementById("result"));    
+                    }
+                }
+                
+                render() {
+                    return (<div>
+                                Username <input type="text" id="username"></input>
+                                <br/>
+                                Password <input type="password" id="password"></input>
+                                <br/>
+                                <button onClick={this.login} id="loginbtn">Login</button>
+                                <div id="result"></div>
+                            </div>);    
+                }
+                
+            }
+
+            class App extends React.Component {
+                render() {
+                    return (<div align="center">
+                            <Header/>
+                            <hr/>
+                            <Authentication/>
+                            <br/><br/><br/><hr/>
+                            <Footer/>
+                    </div>);
+                }
+            }    
+
+            ReactDOM.render(<App/>, document.getElementById("root"));
+
+        </script>
+    </body>
+</html>    
