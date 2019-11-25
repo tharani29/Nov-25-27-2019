@@ -7,11 +7,12 @@
     <body>
         <div id="intuit"></div>
         <script type="text/jsx">
-            //JSX
-            let h1 = <h1>Hello JSX</h1>;
-            //Create a textbox and render it  
-            let tb = <input type="text"></input>;
-            ReactDOM.render(tb, document.getElementById("intuit"));
+            function now() {
+                console.log(new Date().toTimeString());
+            }
+            //onClick, onChange, onFocus, onBlur    
+            let btn = <button onClick={now}>Click</button>
+            ReactDOM.render(btn, document.getElementById("intuit"));        
         </script>
     </body>
 </html>    

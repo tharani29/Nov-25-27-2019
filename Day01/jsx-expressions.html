@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <script crossorigin         src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script> 
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="intuit"></div>
+        <script type="text/jsx">
+            function getMessage() {
+                return "JSX Expressions";
+            }
+            let time = new Date().toLocaleTimeString();
+            let date = new Date().toDateString();
+            
+            let collection = (<div>
+                <label>Mood</label>
+                <h4>{ date.includes("Mon") ? "Bad" : "Better" }</h4>    
+                <hr/>    
+                <h1>{getMessage()}</h1>
+                <hr/>    
+                <h1>{date}</h1>    
+                <h1>{time}</h1>
+            </div>);
+
+            ReactDOM.render(collection, document.getElementById("intuit"));
+        </script>
+    </body>
+</html>    

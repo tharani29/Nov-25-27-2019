@@ -7,11 +7,15 @@
     <body>
         <div id="intuit"></div>
         <script type="text/jsx">
-            //JSX
-            let h1 = <h1>Hello JSX</h1>;
-            //Create a textbox and render it  
-            let tb = <input type="text"></input>;
-            ReactDOM.render(tb, document.getElementById("intuit"));
+//            let button = <button>Click</button>;
+//            let chk = <input type="checkbox"></input>;
+              let item = (<div>
+                    <label>Newsletter</label>
+                    <input type="checkbox"></input>
+                    <br/>
+                    <button>Click</button>  
+                </div>);        
+            ReactDOM.render(item, document.getElementById("intuit"));
         </script>
     </body>
 </html>    
