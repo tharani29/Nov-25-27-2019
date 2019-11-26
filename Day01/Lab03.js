@@ -50,6 +50,7 @@ class Account {
 }
 
 class CurrentAccount extends Account {
+	
 	constructor(balance, name) {
 		super(balance);
 		this.name = name;
