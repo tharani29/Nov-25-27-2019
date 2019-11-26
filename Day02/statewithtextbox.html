@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <script crossorigin         src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script> 
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="text/jsx">
+            class StateExample extends React.Component {
+                constructor(props) {
+                    super(props);
+                    this.state = {
+                        name: "",
+                        message: ""
+                    }
+                    this.buttonClicked = this.buttonClicked.bind(this);
+                    this.nameChanged = this.nameChanged.bind(this);
+                }
+                
+                nameChanged(e) {
+                    let name = e.target.value;
+                    this.setState({ name });
+                }
+                
+                buttonClicked() {
+                    //let name = this.state.name;
+                    let { name } = this.state;
+                    let message = `Hello ${name}`
+                    this.setState({ message });
+                }
+                
+                
+                render() {
+                    return (<div>
+                        Name <input type="text" onChange={this.nameChanged}></input>
+                        <br/>
+                        <button onClick={this.buttonClicked}>Click</button>   
+                        <h1>{this.state.message}</h1>    
+                    </div>);
+                }
+            }
+            ReactDOM.render(<StateExample/>, document.getElementById("root"));
+        </script>
+    </body>
+</html>    
