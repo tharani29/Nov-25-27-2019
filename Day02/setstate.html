@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <script crossorigin         src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script> 
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root2"></div>
+        <div id="root"></div>
+        <script type="text/jsx">
+            
+            //Stateless component
+            const Header = () => <h1>Post lunch session. I am going to sleep</h1>;
+            
+            const Footer = function() {
+                return <h3>Copyrights reserved, 2019</h3>
+            }
+            
+/*
+            class Header extends React.Component {
+                render() {
+                    return <h1>Hello Post lunch session</h1>
+                }
+            }
+*/            
+
+            ReactDOM.render(<Footer/>, document.getElementById("root2"));    
+
+            class StateExample extends React.Component {
+                constructor(props) {
+                    super(props);
+                    this.state = {
+                        counter: 0
+                    }
+                    this.increment = this.increment.bind(this);
+                }
+                
+                increment() {
+                    let { counter } = this.state;
+                    counter++;
+                    
+                    //Executes asynchronously
+//                    this.setState({ counter }, function() {
+//                        console.log("In callback of setstate", this.state.counter);
+//                    });
+                    
+                    this.setState({ counter }, () => {
+                        console.log("In callback of setstate", this.state.counter);
+                    });
+                    
+                    console.log("Next line after setstate", this.state.counter);
+                }
+                
+                render() {
+                    return (<div>
+                        <button onClick={this.increment}>Increment</button>
+                        <h2>{this.state.counter}</h2>
+                    </div>);
+                }
+            }
+            ReactDOM.render(<StateExample/>, document.getElementById("root"));
+        </script>
+    </body>
+</html>    
