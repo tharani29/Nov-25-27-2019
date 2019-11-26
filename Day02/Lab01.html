@@ -14,9 +14,12 @@
                     this.attempts = 0;
                     this.message = "";
                     this.gameOver = false;
+                    this.gameHistory = [];
                 }
                 play(guess) {
                     this.attempts += 1;
+                    this.gameHistory.push({ guess, attempt: this.attempts });
+                    
                     if(guess > this.target) {
                         this.message = "Aim Lower";
                     }
@@ -51,6 +54,28 @@
                     this.setState({ game });
                 }
                 
+                constructGameHistoryRows() {
+                    let { gameHistory } = this.state.game;
+                    let rows = [];
+                    for(let i=0; i < gameHistory.length; i++) {
+                        let item = gameHistory[i];
+                        let row = null;
+                        if(i == gameHistory.length - 1) {
+                            row = (<tr style={{backgroundColor: 'green'}}>
+                                    <td>{item.attempt}</td>
+                                    <td>{item.guess}</td>    
+                                   </tr>);
+                        }
+                        else {
+                            row = (<tr>
+                                    <td>{item.attempt}</td>
+                                    <td>{item.guess}</td>    
+                                </tr>);
+                        }
+                        rows.push(row);
+                    }
+                    return rows;
+                }
                 
                 render() {
                     let { guess } = this.state;
@@ -62,7 +87,19 @@
                         <button disabled={gameOver} onClick={this.play}>Play</button>
                         <hr/>    
                         <h1>{ message }</h1>    
-                        <h2>{ attempts == 0 ? '' : `Attempts: ${attempts}` }</h2>    
+                        <h2>{ attempts == 0 ? '' : `Attempts: ${attempts}` }</h2>  
+                        <hr/>    
+                        <table style={{ display: gameOver ? 'block' : 'none'}}>
+                            <thead>
+                                <tr>
+                                    <th>Attempt</th>    
+                                    <th>Guess</th>    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.constructGameHistoryRows()}
+                            </tbody>
+                        </table>    
                     </div>);
                 }
                 
