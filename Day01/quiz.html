@@ -12,7 +12,13 @@
                     return <h1 style={{color: "red", fontSize: "12px", textAlign: "center"}}>It's Tuesday</h1>
                 }
             }
-            ReactDOM.render(<MyHeader/>, document.getElementById("root"));
+
+            class MyFooter extends React.Component {
+                render() {
+                    return null;
+                }
+            }
+            ReactDOM.render(<MyFooter/>, document.getElementById("root"));
         </script>
     </body>
 </html>    
