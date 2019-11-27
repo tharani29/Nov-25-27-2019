@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <script crossorigin         src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script> 
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="text/jsx">
+            class BindExample extends React.Component {
+                constructor(props) {
+                    super(props);
+                    this.nameTB = React.createRef();
+                    this.button1 = React.createRef();
+                }
+                
+                buttonClicked() {
+                    let tb = this.nameTB.current;
+                    tb.style.backgroundColor = "yellow";
+                    this.button1.current.disabled = true;
+                    this.button1.current.style.display = "none";
+                    console.log(this.nameTB.current.value);
+                }
+                
+                render() {
+                    return (<div>
+                        <input type="text" ref={this.nameTB}></input>    
+                        <button ref={this.button1} onClick={this.buttonClicked.bind(this)}>Click</button>    
+                    </div>);
+                }
+            }
+            ReactDOM.render(<BindExample/>, document.getElementById("root"));
+        </script>
+    </body>    
+    
+    
+    
+    

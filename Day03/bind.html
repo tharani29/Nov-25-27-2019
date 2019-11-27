@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <script crossorigin         src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script> 
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="text/jsx">
+            class BindExample extends React.Component {
+                constructor(props) {
+                    super(props);
+                    this.state = {
+                        time: ""
+                    }
+                    //this.getTime = this.getTime.bind(this);
+                }
+                
+                nameChanged() {
+                    console.log(this);
+                }
+                getTime() {
+                    console.log(this);
+                    //this.setState({ time: new Date().toTimeString() });
+                }
+                
+                getCountries() {
+                    let options = [];
+                    options.push(<option key="id_india">India</option>)
+                    options.push(<option key="id_usa">USA</option>)
+                    options.push(<option key="id_france">France</option>)
+                    return options;
+                }
+                
+                countryChanged(arg1, arg2, e) {
+                    console.log(e.target.value, arg1, arg2)
+                }
+                
+                render() {
+                    let population = Math.round(Math.random() * 100000);
+                    return (<div>
+                        Country <select onChange={this.countryChanged.bind(this, population, "some other value")}>
+                            { this.getCountries() }
+                        </select>    
+                        <br/>    
+                        <input type="text" onChange={ it => this.nameChanged(it) }></input>    
+                        <button onClick={this.getTime.bind(this)}>Get Time</button>    
+                        <h1>{this.state.time}</h1>    
+                    </div>);
+                }
+            }
+            ReactDOM.render(<BindExample/>, document.getElementById("root"));
+        </script>
+    </body>    
