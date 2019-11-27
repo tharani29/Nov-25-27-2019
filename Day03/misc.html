@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <script crossorigin         src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script> 
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="text/jsx">
+            //React Hooks
+            //Used in function components if you want the features like
+            //state, callback methods etc
+
+            const Person = (props) => {
+                
+                const [age, setAge] = React.useState(20);
+                
+                React.useEffect(() => {
+                    console.log(`Age updated to ${age}`);
+                });
+                
+                return (<div>
+                    <h1>Name: {props.name}</h1>
+                    <h2>Age: {age}</h2>
+                    <button onClick={() => setAge(age+1)}>Increment Age</button>    
+                </div>)
+            }
+            ReactDOM.render(<Person name="Sam"/>, document.getElementById("root"));
+
+
+            //Stateless components or Function components
+            const Header = (props) => {
+                return <h1>{props.title}</h1>
+            };
+
+//            ReactDOM.render(<Header title="Last day"/>, document.getElementById("root"));
+        </script>
+    </body>
+</html>    

@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyForm should call the buttonClick function 1`] = `
+<MyForm>
+  <div>
+    <input
+      onChange={[Function]}
+      placeholder="Name"
+      type="text"
+    />
+    <br />
+    <button
+      onClick={[Function]}
+    >
+      Click
+    </button>
+    <h3>
+      Hi Sam
+    </h3>
+  </div>
+</MyForm>
+`;
+
+exports[`MyForm should call the textChanged function 1`] = `
+<MyForm>
+  <div>
+    <input
+      onChange={[Function]}
+      placeholder="Name"
+      type="text"
+    />
+    <br />
+    <button
+      onClick={[Function]}
+    >
+      Click
+    </button>
+    <h3 />
+  </div>
+</MyForm>
+`;

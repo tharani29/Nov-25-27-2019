@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer should render properly with the year prop 1`] = `
+<h5>
+  Copyrights reserved, 
+  2018
+</h5>
+`;
+
+exports[`Footer should render properly with the year prop 2019 1`] = `
+<h5>
+  Copyrights reserved, 
+  2019
+</h5>
+`;
