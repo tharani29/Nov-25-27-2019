@@ -11,6 +11,20 @@
                 constructor(props) {
                     super(props);
                     this.getTime = this.getTime.bind(this);
+                    this.nameChanged = this.nameChanged.bind(this);
+                    this.buttonClicked = this.buttonClicked.bind(this);
+                    this.state = {
+                        name: ""
+                    }
+                }
+                
+                buttonClicked() {
+                    let { name } = this.state;
+                    this.props.playWithName(name);
+                }
+                
+                nameChanged(e) {
+                    this.setState({ name: e.target.value });
                 }
                 
                 getTime() {
@@ -19,6 +33,10 @@
                 
                 render() {
                     return (<div>
+                        <input type="text" placeholder="Name" onChange={this.nameChanged}></input>
+                        <br/>
+                        <button onClick={this.buttonClicked}>Click</button>    
+                        <hr/>    
                         <button onClick={this.getTime}>Get Time</button>    
                     </div>);
                 }
@@ -30,7 +48,8 @@
                 }
                 render() {
                     return (<div>
-                        <h1>{this.props.message}</h1>    
+                        <h1>{this.props.message}</h1>
+                        <h1>{this.props.time}</h1>
                     </div>)
                 }
             }  
@@ -39,20 +58,28 @@
                 constructor(props) {
                     super(props);
                     this.state = {
-                        currentTime: ""
+                        currentTime: "",
+                        message: ""
                     }
                     this.computeCurrentTime = this.computeCurrentTime.bind(this);
+                    this.computeMessage = this.computeMessage.bind(this);
+                }
+                
+                computeMessage(name) {
+                    this.setState({ message: `Hi ${name}`});
                 }
 
                 computeCurrentTime() {
-                    this.setState({ currentTime: new Date().toTimeString()})
+                    this.setState({ currentTime: new Date().toTimeString() })
                 }
                 
                 render() {
                     return (<div>
-                        <Input fn={this.computeCurrentTime}/>
+                        <Input fn={this.computeCurrentTime} 
+                               playWithName={this.computeMessage}/>
                         <hr/>
-                        <Output message={this.state.currentTime}/>    
+                        <Output message={this.state.message}  
+                                time={this.state.currentTime}/>    
                     </div>)
                 }
             }
